@@ -101,3 +101,12 @@ footer {
 .project h3 {
   color: #58a6ff;
 }
+.buttons a[href*="linkedin"] {
+  border-color: #0a66c2;
+  color: #0a66c2;
+}
+
+.buttons a[href*="linkedin"]:hover {
+  background-color: #0a66c2;
+  color: #ffffff;
+}
