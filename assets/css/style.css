@@ -1,0 +1,64 @@
+/* Global */
+body {
+  margin: 0;
+  font-family: "Courier New", monospace;
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #58a6ff;
+}
+
+.subtitle {
+  font-size: 1.4rem;
+  color: #8b949e;
+}
+
+.tagline {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+/* Buttons */
+.buttons a {
+  display: inline-block;
+  margin: 15px;
+  padding: 10px 20px;
+  border: 1px solid #58a6ff;
+  color: #58a6ff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.buttons a:hover {
+  background-color: #58a6ff;
+  color: #0d1117;
+}
+
+/* Sections */
+section {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  color: #58a6ff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #8b949e;
+}
