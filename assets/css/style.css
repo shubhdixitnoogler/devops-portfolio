@@ -1,4 +1,8 @@
 /* Global */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Courier New", monospace;
@@ -46,14 +50,20 @@ body {
 
 /* Sections */
 section {
-  padding: 40px 20px;
+  padding: 80px 20px;
   max-width: 900px;
   margin: auto;
 }
 
 h2 {
   color: #58a6ff;
+  margin-bottom: 20px;
 }
+
+h2:hover {
+  text-shadow: 0 0 8px rgba(88, 166, 255, 0.4);
+}
+
 
 /* Footer */
 footer {
@@ -69,6 +79,11 @@ footer {
   margin-bottom: 20px;
   border-radius: 8px;
   background-color: #0d1117;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .project h3 {
