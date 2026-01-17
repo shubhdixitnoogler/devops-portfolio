@@ -30,6 +30,18 @@ body {
   margin-top: 10px;
   font-size: 1rem;
 }
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s step-start infinite;
+  color: #58a6ff;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 
 /* Buttons */
 .buttons a {
