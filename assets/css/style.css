@@ -62,3 +62,15 @@ footer {
   font-size: 0.9rem;
   color: #8b949e;
 }
+
+.project {
+  border: 1px solid #30363d;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #0d1117;
+}
+
+.project h3 {
+  color: #58a6ff;
+}
