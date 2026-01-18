@@ -110,3 +110,13 @@ footer {
   background-color: #0a66c2;
   color: #ffffff;
 }
+/* GitHub button styling */
+.buttons a[href*="github"] {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.buttons a[href*="github"]:hover {
+  background-color: #ffffff;
+  color: #0d1117;
+}
