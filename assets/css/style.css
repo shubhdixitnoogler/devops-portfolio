@@ -105,3 +105,16 @@ footer {
   color: #58a6ff;
 }
 
+/* Contact section */
+#contact p {
+  margin: 10px 0;
+}
+
+#contact a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
