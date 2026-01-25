@@ -1,4 +1,4 @@
-const text = "Automating AWS infrastructure, CI/CD pipelines & reliable systems";
+const text = "I design and automate CI/CD pipelines, containerized deployments, and cloud infrastructure to reduce manual effort, improve deployment reliability, and support production-ready systems.";
 const speed = 60;
 
 let i = 0;

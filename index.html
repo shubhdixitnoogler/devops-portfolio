@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -10,7 +11,7 @@
 
   <header class="hero">
     <h1>Shubh Dixit</h1>
-    <p class="subtitle">DevOps / Site Reliability Engineer</p>
+    <p class="subtitle">DevOps Engineer focused on automation, reliability, and scalable cloud infrastructure</p>
     <p class="tagline">
   <span id="terminal-text"></span>
   <span class="cursor">█</span>
@@ -35,68 +36,228 @@
   <section id="about">
   <h2>About Me</h2>
   <p>
-    DevOps / Site Reliability Engineer with ~3 years of experience supporting and
-    automating AWS-based production environments. Hands-on experience in building
-    CI/CD pipelines, infrastructure automation using Ansible, and containerized
-    deployments using Docker.
-  </p>
-  <p>
-    Proven ability to reduce manual operational effort, improve deployment
-    reliability, and support production systems through automation, monitoring,
-    and incident response. Experienced in collaborating with cross-functional
-    teams to deliver stable and scalable systems.
-  </p>
+      I’m a DevOps Engineer with a strong interest in building reliable, automated, and scalable systems.
+      My journey into DevOps started with curiosity around how applications are deployed, monitored,
+      and kept stable in real-world environments.
+    </p>
+    <br />
+    <p>
+      I enjoy working on CI/CD automation, cloud infrastructure on AWS, containerized deployments,
+      and operational tooling that reduces repetitive work and human error. I focus on understanding
+      the why behind architectural decisions, not just the how.
+    </p>
+    <br />
+    <p>
+      Currently, I’m strengthening my skills by building production-like projects that simulate
+      real DevOps challenges such as monitoring, failure handling, and deployment strategies.
+    </p>
 </section>
 
 
   <section id="skills">
     <h2>Skills</h2>
-    <ul>
-      <li>AWS (EC2, S3, VPC, IAM, CloudWatch)</li>
-      <li>Git & GitHub</li>
-      <li>GitHub Actions (CI/CD)</li>
-      <li>Ansible (Automation)</li>
-      <li>Docker</li>
-      <li>Linux</li>
-    </ul>
+     <div class="card">
+      <h3>☁️ Cloud & Infrastructure</h3>
+     <p>Designing and managing cloud infrastructure on AWS with a focus on scalability, security basics, and cost-aware resource usage.</p>
+     <p>AWS (EC2, S3, VPC, IAM, CloudWatch)</p>
+    </div>
+
+    <div class="card">
+      <h3>🔁 CI/CD & Automation</h3>
+      <p>Building automated pipelines to streamline build, test, and deployment workflows while reducing manual intervention.</p>
+      <p>GitHub Actions, Git, GitHub</p>
+    </div>
+
+    <div class="card">
+      <h3>🐳 Containers & Deployment</h3>
+      <p>Packaging applications into containers and deploying them in a consistent and repeatable manner across environments.</p>
+      <p>Docker</p>
+    </div>
+
+    <div class="card">
+      <h3>📊 Monitoring & Reliability</h3>
+      <p>Implementing basic monitoring and alerting to observe system health and improve operational visibility.</p>
+      <p>CloudWatch (Logs, Metrics, Alarms)</p>
+    </div>
+
+    <div class="card">
+      <h3>🖥️ OS & Fundamentals</h3>
+      <p>Working comfortably with Linux systems, shell commands, and foundational networking concepts.</p>
+      <p>Linux, Shell scripting, Networking basics</p>
+    </div>
   </section>
 
-  <section id="projects">
+<section id="projects">
   <h2>Projects</h2>
 
+  <!-- PROJECT 1 -->
   <div class="project">
-    <h3>CI/CD Pipeline for DevOps Portfolio</h3>
+    <h3>🚀 CI/CD Pipeline for Containerized Application on AWS</h3>
+
+    <h4>Problem</h4>
     <p>
-  Designed and implemented an end-to-end CI/CD pipeline using GitHub Actions.
-  Automated code validation and deployment to Netlify, enabling consistent and
-  repeatable production releases with minimal manual intervention.
-</p>
-<p><strong>Tools:</strong> GitHub Actions, Netlify, Git</p>
+      Manual deployments were time-consuming, error-prone, and inconsistent across
+      environments, making it difficult to deploy updates reliably.
+    </p>
 
-  </div>
-
-  <div class="project">
-    <h3>AWS Infrastructure Automation with Ansible</h3>
-      <p>
-  Automated configuration and management of AWS EC2 instances using Ansible
-  playbooks and dynamic inventory. Reduced configuration drift and manual
-  operational tasks by enforcing consistent, repeatable infrastructure states.
-</p>
-<p><strong>Tools:</strong> AWS, Ansible, Linux</p>
-    
-  </div>
-
-  <div class="project">
-    <h3>Dockerized Application Deployment</h3>
+    <h4>Architecture / Approach</h4>
     <p>
-  Containerized a web application using Docker to ensure consistent runtime
-  environments across development and deployment stages. Improved portability
-  and deployment reliability through standardized container builds.
-</p>
-<p><strong>Tools:</strong> Docker, Linux</p>
+      Designed a CI/CD pipeline using GitHub Actions to automate application build,
+      Docker image creation, and deployment to AWS infrastructure.
+    </p>
 
+    <h4>Implementation</h4>
+    <ul>
+      <li>Configured GitHub Actions workflows to trigger on code changes</li>
+      <li>Built and validated Docker images automatically</li>
+      <li>Deployed application to AWS EC2 instances</li>
+      <li>Used environment-based configuration for flexibility</li>
+    </ul>
+
+    <h4>Challenges Faced</h4>
+    <ul>
+      <li>Managing secrets securely in CI/CD pipelines</li>
+      <li>Ensuring consistent Docker builds</li>
+      <li>Handling deployment failures during pipeline execution</li>
+    </ul>
+
+    <h4>Outcome / Impact</h4>
+    <ul>
+      <li>Significantly reduced manual deployment effort</li>
+      <li>Improved deployment consistency</li>
+      <li>Enabled faster feedback and iteration during development</li>
+    </ul>
+
+    <p><strong>Tools Used:</strong> GitHub Actions, Docker, AWS EC2, Linux</p>
   </div>
+
+  <!-- PROJECT 2 -->
+  <div class="project">
+    <h3>☁️ AWS Infrastructure Automation Using Ansible</h3>
+
+    <h4>Problem</h4>
+    <p>
+      Manually configuring servers led to configuration drift and inconsistent
+      environments.
+    </p>
+
+    <h4>Architecture / Approach</h4>
+    <p>
+      Implemented infrastructure automation using Ansible playbooks to standardize
+      server setup and application deployment.
+    </p>
+
+    <h4>Implementation</h4>
+    <ul>
+      <li>Created reusable Ansible playbooks for system configuration</li>
+      <li>Automated package installation and service setup</li>
+      <li>Ensured idempotent executions for reliability</li>
+    </ul>
+
+    <h4>Challenges Faced</h4>
+    <ul>
+      <li>Writing idempotent tasks</li>
+      <li>Managing inventory and roles effectively</li>
+    </ul>
+
+    <h4>Outcome / Impact</h4>
+    <ul>
+      <li>Consistent server configurations</li>
+      <li>Reduced setup time</li>
+      <li>Improved repeatability across environments</li>
+    </ul>
+
+    <p><strong>Tools Used:</strong> Ansible, AWS EC2, Linux</p>
+  </div>
+
+  <!-- PROJECT 3 -->
+  <div class="project">
+    <h3>📦 Dockerized Application Deployment</h3>
+
+    <h4>Problem</h4>
+    <p>
+      Application behavior differed across environments due to dependency mismatches.
+    </p>
+
+    <h4>Architecture / Approach</h4>
+    <p>
+      Containerized the application using Docker to ensure consistency across
+      development and deployment environments.
+    </p>
+
+    <h4>Implementation</h4>
+    <ul>
+      <li>Created Dockerfile to package application and dependencies</li>
+      <li>Tested containers locally before deployment</li>
+      <li>Integrated Docker builds into the CI pipeline</li>
+    </ul>
+
+    <h4>Challenges Faced</h4>
+    <ul>
+      <li>Optimizing Docker image size</li>
+      <li>Managing environment variables securely</li>
+    </ul>
+
+    <h4>Outcome / Impact</h4>
+    <ul>
+      <li>Environment-agnostic deployments</li>
+      <li>Simplified application distribution</li>
+      <li>Improved deployment reliability</li>
+    </ul>
+
+    <p><strong>Tools Used:</strong> Docker, Linux</p>
+  </div>
+
+  <!-- PROJECT 4 -->
+  <div class="project">
+    <h3>📊 Monitoring & Alerting Setup for AWS EC2 Application</h3>
+
+    <h4>Problem</h4>
+    <p>
+      Lack of monitoring made it difficult to detect performance issues or failures
+      early.
+    </p>
+
+    <h4>Architecture / Approach</h4>
+    <p>
+      Implemented monitoring and alerting using AWS CloudWatch to observe system
+      health and respond proactively to incidents.
+    </p>
+
+    <h4>Implementation</h4>
+    <ul>
+      <li>Configured CloudWatch metrics for CPU, memory, and disk usage</li>
+      <li>Set up log collection for application and system logs</li>
+      <li>Created alarms and notifications for threshold breaches</li>
+    </ul>
+
+    <h4>Challenges Faced</h4>
+    <ul>
+      <li>Choosing meaningful alert thresholds</li>
+      <li>Avoiding alert noise</li>
+    </ul>
+
+    <h4>Outcome / Impact</h4>
+    <ul>
+      <li>Improved system visibility</li>
+      <li>Faster incident detection</li>
+      <li>Better understanding of application behavior under load</li>
+    </ul>
+
+    <p><strong>Tools Used:</strong> AWS CloudWatch, EC2, Linux</p>
+  </div>
+
 </section>
+
+<section id="learning">
+    <h2>Currently Learning</h2>
+    <ul>
+      <li>Advanced AWS networking & security</li>
+      <li>CI/CD pipeline optimization</li>
+      <li>Blue-Green & Canary deployments</li>
+      <li>Observability fundamentals</li>
+    </ul>
+  </section>
 
 <section id="contact">
   <h2>Contact</h2>
@@ -133,7 +294,7 @@
   </a>
 </p>
 
-    <p>© 2026 Shubh Dixit | DevOps Engineer</p>
+    <p> Built with a focus on learning, automation, and real-world DevOps practices. <br /> © 2026 Shubh Dixit | DevOps Engineer</p>
   </footer>
 <script src="assets/js/typing.js"></script>
 
