@@ -1,4 +1,6 @@
-/* Global */
+/* =====================
+   Global
+===================== */
 html {
   scroll-behavior: smooth;
 }
@@ -8,28 +10,36 @@ body {
   font-family: "Courier New", monospace;
   background-color: #0d1117;
   color: #c9d1d9;
+  line-height: 1.6;
 }
 
-/* Hero section */
+/* =====================
+   Hero Section
+===================== */
 .hero {
   text-align: center;
-  padding: 80px 20px;
+  padding: 100px 20px;
+  background: radial-gradient(circle at top, #0d1117, #010409);
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   color: #58a6ff;
+  letter-spacing: 0.5px;
 }
 
 .subtitle {
   font-size: 1.4rem;
   color: #8b949e;
+  margin-top: 6px;
 }
 
 .tagline {
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 1rem;
+  color: #58a6ff;
 }
+
 .cursor {
   display: inline-block;
   margin-left: 4px;
@@ -43,71 +53,122 @@ body {
   }
 }
 
-/* Buttons */
+/* =====================
+   Buttons
+===================== */
+.buttons {
+  margin-top: 30px;
+}
+
 .buttons a {
   display: inline-block;
   margin: 10px;
-  padding: 10px 22px;
+  padding: 12px 26px;
   border: 1px solid #58a6ff;
   color: #58a6ff;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
+  background-color: transparent;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .buttons a:hover {
   background-color: #58a6ff;
   color: #0d1117;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
-
-/* Sections */
+/* =====================
+   Sections
+===================== */
 section {
-  padding: 40px 20px;
-  max-width: 900px;
+  padding: 60px 20px;
+  max-width: 1000px;
   margin: auto;
 }
 
 h2 {
   color: #58a6ff;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  border-left: 4px solid #58a6ff;
+  padding-left: 12px;
 }
 
 h2:hover {
   text-shadow: 0 0 8px rgba(88, 166, 255, 0.4);
 }
 
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  color: #8b949e;
+/* =====================
+   Skills Section
+===================== */
+#skills ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
 }
 
-.project {
-  border: 1px solid #30363d;
-  padding: 20px;
-  margin-bottom: 20px;
+#skills li {
+  background-color: #0d1117;
+  border: 1px solid #21262d;
+  padding: 16px;
   border-radius: 8px;
+}
+
+/* =====================
+   Projects
+===================== */
+.project {
+  border: 1px solid #21262d;
+  padding: 28px;
+  margin-bottom: 30px;
+  border-radius: 10px;
   background-color: #0d1117;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .project:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 35px rgba(88, 166, 255, 0.15);
 }
 
 .project h3 {
   color: #58a6ff;
+  margin-bottom: 14px;
 }
 
-/* Contact section */
+.project h4 {
+  margin-top: 20px;
+  margin-bottom: 6px;
+  color: #8b949e;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project ul {
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
+.project strong {
+  color: #58a6ff;
+}
+
+/* =====================
+   Contact Section
+===================== */
+#contact {
+  background-color: #0d1117;
+  border-top: 1px solid #21262d;
+  border-bottom: 1px solid #21262d;
+}
+
 #contact p {
-  margin: 10px 0;
+  margin: 12px 0;
 }
 
 #contact a {
@@ -117,4 +178,31 @@ footer {
 
 #contact a:hover {
   text-decoration: underline;
+}
+
+/* =====================
+   Footer
+===================== */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.9rem;
+  color: #8b949e;
+}
+
+/* =====================
+   Responsive Tweaks
+===================== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
 }
