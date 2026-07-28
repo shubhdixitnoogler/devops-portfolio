@@ -292,14 +292,19 @@ body::before {
   margin-right: 6px;
 }
 
-.terminal-body .output {
+.terminal-body .output-line {
   color: #c9d1d9;
   margin: 0 0 12px;
 }
 
-.terminal-body .output.success {
+.terminal-body .output-line.success {
   color: #27c93f;
   margin-bottom: 0;
+}
+
+.term-cursor {
+  color: inherit;
+  margin-left: 2px;
 }
 
 /* =====================
