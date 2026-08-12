@@ -35,6 +35,11 @@
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.ico" />
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -42,13 +47,23 @@
 <body>
 
   <header class="hero">
-    <h1>Shubh Dixit</h1>
+    <p class="eyebrow"><span class="pulse-dot"></span>Available for DevOps / SRE roles</p>
+    <h1>Shubh <span class="accent">Dixit</span></h1>
     <p class="subtitle">DevOps Engineer | Azure &amp; AWS Cloud Infrastructure | CI/CD | Kubernetes | Terraform</p>
     <p class="tagline">
   <span id="terminal-text"></span>
   <span class="cursor">█</span>
 </p>
 
+    <div class="status-bar" role="img" aria-label="Career status summary: operational, 99.9 percent uptime sustained, 40 percent deployment lead time reduction, 3.5 plus years of experience, zero open incidents">
+      <p class="status-badge"><span class="status-dot"></span>System Status: Operational</p>
+      <ul class="status-metrics">
+        <li><span class="metric-value" data-count="99.9" data-suffix="%">0%</span><span class="metric-label">Uptime Sustained</span></li>
+        <li><span class="metric-value" data-count="40" data-suffix="%">0%</span><span class="metric-label">Deploy Lead Time Cut</span></li>
+        <li><span class="metric-value" data-count="3.5" data-suffix="+ yrs">0</span><span class="metric-label">Experience</span></li>
+        <li><span class="metric-value" data-count="0" data-suffix="">0</span><span class="metric-label">Open Incidents</span></li>
+      </ul>
+    </div>
 
     <div class="buttons">
   <a href="#experience">Professional Experience</a>
@@ -182,27 +197,35 @@
 
 <section id="experience">
   <h2>Professional Experience</h2>
+  <p class="timeline-company">HCL Technologies — Lucknow, India</p>
 
-  <div class="project">
-    <h3>HCL Technologies, Lucknow, India</h3>
-    <h4>DevOps Automation Engineer (Senior Analyst) — Oct 2024 – Present</h4>
-    <ul>
-      <li>Architected robust CI/CD pipelines using GitHub Actions and Azure DevOps to automate the microservices lifecycle, reducing deployment lead time by 40%</li>
-      <li>Managed container orchestration on Azure Kubernetes Service (AKS) and AWS EKS; implemented Horizontal Pod Autoscaling (HPA) and Ingress controllers to optimize resource utilization</li>
-      <li>Designed and provisioned Azure network infrastructure including VNets, NSGs, Load Balancers, NAT Gateways, and Application Gateways to secure and route production traffic</li>
-      <li>Built reusable Terraform modules using for_each loops and dynamic blocks for multi-cloud infrastructure provisioning, ensuring environment parity across Dev, Staging, and Production</li>
-      <li>Established an enterprise observability stack using Prometheus and Grafana; created custom alerting rules and dashboards to monitor cluster health and application latency</li>
-      <li>Led Docker-based containerization strategy with multi-stage builds, optimizing image size and integrating security scanning into the CI/CD pipeline</li>
-      <li>Provided L1 production support and performed Root Cause Analysis (RCA) for infrastructure incidents, maintaining 99.9% uptime for business-critical applications</li>
-    </ul>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <span class="timeline-period">Oct 2024 — Present</span>
+      <h4>DevOps Automation Engineer (Senior Analyst)</h4>
+      <ul>
+        <li>Architected robust CI/CD pipelines using GitHub Actions and Azure DevOps to automate the microservices lifecycle, reducing deployment lead time by 40%</li>
+        <li>Managed container orchestration on Azure Kubernetes Service (AKS) and AWS EKS; implemented Horizontal Pod Autoscaling (HPA) and Ingress controllers to optimize resource utilization</li>
+        <li>Designed and provisioned Azure network infrastructure including VNets, NSGs, Load Balancers, NAT Gateways, and Application Gateways to secure and route production traffic</li>
+        <li>Built reusable Terraform modules using for_each loops and dynamic blocks for multi-cloud infrastructure provisioning, ensuring environment parity across Dev, Staging, and Production</li>
+        <li>Established an enterprise observability stack using Prometheus and Grafana; created custom alerting rules and dashboards to monitor cluster health and application latency</li>
+        <li>Led Docker-based containerization strategy with multi-stage builds, optimizing image size and integrating security scanning into the CI/CD pipeline</li>
+        <li>Provided L1 production support and performed Root Cause Analysis (RCA) for infrastructure incidents, maintaining 99.9% uptime for business-critical applications</li>
+      </ul>
+    </div>
 
-    <h4>Analyst – Infrastructure Support — Feb 2023 – Sept 2024</h4>
-    <ul>
-      <li>Automated repetitive system administration tasks, log rotations, and daily health checks using Bash and Shell scripting, reducing manual operational effort by 25%</li>
-      <li>Monitored and debugged complex application incidents using Linux CLI tools (grep, awk, sed, top) and log analysis to ensure minimal downtime</li>
-      <li>Supported deployment validation and post-release monitoring using Azure Monitor and AWS CloudWatch, ensuring stable production rollouts</li>
-      <li>Implemented automated backup scripts using Shell scripting to ensure data integrity and disaster recovery readiness</li>
-    </ul>
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <span class="timeline-period">Feb 2023 — Sept 2024</span>
+      <h4>Analyst – Infrastructure Support</h4>
+      <ul>
+        <li>Automated repetitive system administration tasks, log rotations, and daily health checks using Bash and Shell scripting, reducing manual operational effort by 25%</li>
+        <li>Monitored and debugged complex application incidents using Linux CLI tools (grep, awk, sed, top) and log analysis to ensure minimal downtime</li>
+        <li>Supported deployment validation and post-release monitoring using Azure Monitor and AWS CloudWatch, ensuring stable production rollouts</li>
+        <li>Implemented automated backup scripts using Shell scripting to ensure data integrity and disaster recovery readiness</li>
+      </ul>
+    </div>
   </div>
 </section>
 
