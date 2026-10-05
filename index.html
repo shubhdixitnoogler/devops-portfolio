@@ -44,9 +44,15 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/avatar.css">
   <link rel="stylesheet" href="assets/css/cursor.css">
+  <link rel="stylesheet" href="assets/css/sre-features.css">
 </head>
 
 <body>
+
+  <!-- Global Command Palette Trigger Chip -->
+  <button type="button" class="palette-trigger-chip" title="Open Command Palette (Ctrl+K)" aria-label="Open command palette">
+    <span class="palette-key">Ctrl</span><span class="palette-key">K</span> Commands
+  </button>
 
   <!-- Walking DevOps Engineer Avatar -->
   <div id="avatar-wrap" aria-hidden="false">
@@ -321,19 +327,90 @@
       </ul>
     </div>
 
+    <!-- Live SRE Cluster Telemetry & Golden Signals HUD -->
+    <div class="sre-telemetry-hud" id="sre-telemetry-hud" role="region" aria-label="Kubernetes Cluster Telemetry and Golden Signals">
+      <div class="telemetry-header">
+        <div class="telemetry-title">
+          <span class="status-dot"></span>
+          <span>aks-prod-central-01 • SRE Telemetry HUD</span>
+        </div>
+        <div class="telemetry-actions">
+          <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint);">Live PromQL Ingestion</span>
+          <button type="button" class="telemetry-chaos-btn" title="Simulate real-time cluster incident response">
+            <span>🚨</span> Trigger Chaos Sim
+          </button>
+        </div>
+      </div>
+
+      <div class="telemetry-grid">
+        <!-- Metric 1: Latency P95 -->
+        <div class="telemetry-card">
+          <div class="card-metric-label">
+            <span>Latency (P95)</span>
+            <span>SLO: &lt;50ms</span>
+          </div>
+          <div class="card-metric-value" id="hud-val-latency">24ms</div>
+          <canvas class="sparkline-canvas" id="sparkline-latency"></canvas>
+          <div class="card-metric-status">
+            <span>●</span> Normal Latency
+          </div>
+        </div>
+
+        <!-- Metric 2: Traffic RPS -->
+        <div class="telemetry-card">
+          <div class="card-metric-label">
+            <span>Traffic (RPS)</span>
+            <span>Ingress NGINX</span>
+          </div>
+          <div class="card-metric-value" id="hud-val-rps">1,420/s</div>
+          <canvas class="sparkline-canvas" id="sparkline-rps"></canvas>
+          <div class="card-metric-status">
+            <span>●</span> Healthy Throughput
+          </div>
+        </div>
+
+        <!-- Metric 3: Error Rate -->
+        <div class="telemetry-card">
+          <div class="card-metric-label">
+            <span>Error Rate</span>
+            <span>5xx &lt; 0.1%</span>
+          </div>
+          <div class="card-metric-value" id="hud-val-error">0.001%</div>
+          <canvas class="sparkline-canvas" id="sparkline-error"></canvas>
+          <div class="card-metric-status">
+            <span>●</span> Zero Anomalies
+          </div>
+        </div>
+
+        <!-- Metric 4: CPU Saturation -->
+        <div class="telemetry-card">
+          <div class="card-metric-label">
+            <span>CPU Saturation</span>
+            <span>Cluster 6 Nodes</span>
+          </div>
+          <div class="card-metric-value" id="hud-val-sat">42%</div>
+          <canvas class="sparkline-canvas" id="sparkline-sat"></canvas>
+          <div class="card-metric-status">
+            <span>●</span> Headroom Stable
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="buttons">
-  <a href="#experience">Professional Experience</a>
-  <a href="#projects">View Projects</a>
-  <a href="Shubh_Dixit_SRE_DevOps.pdf" download>Download Resume</a>
-  <a href="https://www.linkedin.com/in/shubhdixitnoogler" target="_blank" rel="noopener">
-    LinkedIn
-  </a>
-  <a href="https://github.com/shubhdixitnoogler"
-     target="_blank"
-     rel="noopener">
-    GitHub
-  </a>
-</div>
+      <a href="#experience">Professional Experience</a>
+      <a href="#projects">View Projects</a>
+      <a href="Shubh_Dixit_SRE_DevOps.pdf" class="preview-resume-btn" role="button">Preview Resume 👁️</a>
+      <a href="Shubh_Dixit_SRE_DevOps.pdf" download>Download Resume</a>
+      <a href="https://www.linkedin.com/in/shubhdixitnoogler" target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+      <a href="https://github.com/shubhdixitnoogler"
+         target="_blank"
+         rel="noopener">
+        GitHub
+      </a>
+    </div>
 
     <ul class="tech-stack">
       <li><span class="tech-icon" aria-hidden="true">☁</span>Azure</li>
@@ -401,62 +478,76 @@
 
 
   <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>
+    <h2>Skills Matrix &amp; Production Proof</h2>
+
+    <!-- Skills Matrix Category Navigation -->
+    <div class="skills-filter-nav" role="tablist" aria-label="Skills Category Filters">
+      <button type="button" class="skill-filter-btn active" data-category="all">⚡ All Skills</button>
+      <button type="button" class="skill-filter-btn" data-category="cloud">☁️ Cloud (Azure/AWS)</button>
+      <button type="button" class="skill-filter-btn" data-category="k8s">☸️ Kubernetes &amp; Docker</button>
+      <button type="button" class="skill-filter-btn" data-category="iac">🏗️ Terraform &amp; IaC</button>
+      <button type="button" class="skill-filter-btn" data-category="cicd">🔁 CI/CD &amp; GitOps</button>
+      <button type="button" class="skill-filter-btn" data-category="observability">📊 Observability &amp; SRE</button>
+    </div>
+
+    <ul class="skills-grid">
+      <li data-skill="azure" data-category="cloud" title="Click to view production proof">
         <h3>☁️ Cloud Platforms</h3>
         <p>Designing and managing infrastructure across Azure and AWS with a focus on scalability, security, and cost-aware resource usage.</p>
         <p><strong>Tools:</strong> Microsoft Azure (AKS, Virtual Machines, Resource Groups, App Services, Azure Pipelines), AWS (EC2, S3, EKS)</p>
       </li>
 
-      <li>
+      <li data-skill="azure" data-category="cloud" title="Click to view production proof">
         <h3>🌐 Azure Networking</h3>
         <p>Provisioning and securing production network infrastructure to route and protect application traffic.</p>
         <p><strong>Tools:</strong> Virtual Network (VNet), Network Security Groups (NSG), Load Balancer, NAT Gateway, Application Gateway, VPN Gateway, Peering</p>
       </li>
 
-      <li>
+      <li data-skill="kubernetes" data-category="k8s" title="Click to view production proof">
         <h3>🐳 Containers &amp; Orchestration</h3>
         <p>Packaging applications into containers and orchestrating them at scale with Kubernetes for consistent, resilient deployments.</p>
         <p><strong>Tools:</strong> Docker, Kubernetes (AKS/EKS), Horizontal Pod Autoscaling (HPA), Ingress Controllers</p>
       </li>
 
-      <li>
+      <li data-skill="terraform" data-category="iac" title="Click to view production proof">
         <h3>🏗️ Infrastructure as Code</h3>
         <p>Building reusable, modular infrastructure definitions for repeatable, environment-parity provisioning.</p>
         <p><strong>Tools:</strong> Terraform (Modules, for_each, dynamic blocks, remote state, workspaces, variables/outputs), Ansible</p>
       </li>
 
-      <li>
+      <li data-skill="github-actions" data-category="cicd" title="Click to view production proof">
         <h3>🔁 CI/CD &amp; Version Control</h3>
         <p>Building automated pipelines and deployment strategies to streamline build, test, and release workflows.</p>
         <p><strong>Tools:</strong> GitHub Actions, Azure DevOps Pipelines, Git/GitHub, Blue-Green &amp; Canary Deployments, GitOps practices</p>
       </li>
 
-      <li>
+      <li data-skill="linux" data-category="iac" title="Click to view production proof">
         <h3>🧰 Automation &amp; Scripting</h3>
         <p>Writing scripts and tooling that reduce repetitive work and eliminate manual operational toil.</p>
         <p><strong>Tools:</strong> Python, Bash/Shell Scripting, PowerShell</p>
       </li>
 
-      <li>
+      <li data-skill="prometheus" data-category="observability" title="Click to view production proof">
         <h3>📊 Observability &amp; Monitoring</h3>
         <p>Implementing monitoring, alerting, and dashboards to observe system health and sustain high uptime.</p>
         <p><strong>Tools:</strong> Prometheus, Grafana, Azure Monitor, AWS CloudWatch, Custom Alerting &amp; Dashboards</p>
       </li>
 
-      <li>
+      <li data-skill="linux" data-category="iac" title="Click to view production proof">
         <h3>🖥️ OS, Networking &amp; Security</h3>
         <p>Administering Linux systems and applying core networking and security practices in production environments.</p>
         <p><strong>Tools:</strong> Linux Administration (Ubuntu, RHEL), TCP/IP, DNS, RBAC, IAM, Security Scanning, Secrets Management</p>
       </li>
 
-      <li class="skill-loading">
+      <li class="skill-loading" data-category="all">
         <div class="loading-spinner"></div>
         <h3>Unlocking new skill<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span></h3>
         <p>Always sharpening the stack. Check back soon for what's next.</p>
       </li>
     </ul>
+
+    <!-- Expandable Engineering Proof Card -->
+    <div id="skill-proof-card" class="skill-proof-card" aria-live="polite"></div>
   </section>
 
 <section id="experience">
@@ -841,29 +932,128 @@
 
 
   <footer>
-<p>
-  <a href="Shubh_Dixit_SRE_DevOps.pdf" download style="color:#58a6ff;">
-    Download Resume
-  </a>
-
-  <a href="https://www.linkedin.com/in/shubhdixitnoogler"
-     target="_blank"
-     rel="noopener"
-     style="color:#58a6ff;">
-    LinkedIn Profile
-  </a>
-</p>
+    <p>
+      <a href="Shubh_Dixit_SRE_DevOps.pdf" class="preview-resume-btn" style="color:#5eead4; margin-right: 14px;">
+        Preview Resume 👁️
+      </a>
+      <a href="Shubh_Dixit_SRE_DevOps.pdf" download style="color:#58a6ff; margin-right: 14px;">
+        Download Resume 📥
+      </a>
+      <a href="https://www.linkedin.com/in/shubhdixitnoogler"
+         target="_blank"
+         rel="noopener"
+         style="color:#58a6ff;">
+        LinkedIn Profile ↗
+      </a>
+    </p>
 
     <p> Built with a focus on learning, automation, and real-world DevOps practices. <br /> © 2026 Shubh Dixit | DevOps Engineer</p>
   </footer>
-<script src="assets/js/audio.js"></script>
-<script src="assets/js/typing.js"></script>
-<script src="assets/js/terminal.js"></script>
-<script src="assets/js/network-bg.js"></script>
-<script src="assets/js/avatar.js"></script>
-<script src="assets/js/cursor.js"></script>
-<script src="assets/js/architecture.js"></script>
-<script src="assets/js/contact.js"></script>
+
+  <!-- Global Command Palette Modal (Ctrl+K / Cmd+K) -->
+  <div id="palette-overlay" class="palette-overlay" role="dialog" aria-modal="true" aria-label="Command Palette">
+    <div class="palette-box">
+      <div class="palette-input-wrap">
+        <span class="palette-icon">🔍</span>
+        <input type="text" id="palette-input" class="palette-input" placeholder="Type a command, section, or action... (e.g. 'resume', 'skills', 'chaos')" autocomplete="off" spellcheck="false" />
+        <span class="palette-esc-badge">ESC</span>
+      </div>
+      <div class="palette-list" id="palette-list" role="listbox"></div>
+    </div>
+  </div>
+
+  <!-- Interactive Chaos & Incident Response Simulator Modal -->
+  <div id="chaos-modal" class="chaos-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="chaos-heading">
+    <div class="chaos-modal-box">
+      <div class="chaos-header">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="chaos-badge">P1 CRITICAL ALERT</span>
+          <span class="chaos-timer" id="chaos-timer">MTTR: 00:00</span>
+        </div>
+        <button type="button" class="chaos-close-btn" aria-label="Close Chaos Simulator">✕</button>
+      </div>
+
+      <div class="chaos-body">
+        <div class="chaos-alert-banner">
+          <div class="chaos-alert-title" id="chaos-heading">🚨 [PAGERDUTY P1] Production Checkout Latency Spike &amp; 5xx Influx</div>
+          <p class="chaos-alert-detail">
+            Service: <code>checkout-service:v2.4</code> on AKS cluster. Pods are experiencing memory leak (OOMKilled restarts), error budget burning at 14.2x rate!
+          </p>
+        </div>
+
+        <div class="chaos-telemetry-strip">
+          <div class="chaos-strip-item">
+            <span class="chaos-strip-label">P99 LATENCY</span>
+            <span class="chaos-strip-val" id="chaos-val-lat">2.85s</span>
+          </div>
+          <div class="chaos-strip-item">
+            <span class="chaos-strip-label">ERROR RATE</span>
+            <span class="chaos-strip-val" id="chaos-val-err">4.82%</span>
+          </div>
+          <div class="chaos-strip-item">
+            <span class="chaos-strip-label">BURN RATE</span>
+            <span class="chaos-strip-val" id="chaos-val-burn">14.2x</span>
+          </div>
+        </div>
+
+        <div class="chaos-choices-title">Select Mitigation Strategy (SRE Triage):</div>
+
+        <div class="chaos-options-list" id="chaos-options">
+          <button type="button" class="chaos-option-btn" data-action="rollback">
+            <span class="chaos-option-cmd">▶ GitOps Rollback: Revert Helm Release to Stable v2.3</span>
+            <span class="chaos-option-expl">Immediately roll back the faulty release via ArgoCD/Helm; terminate bad pods and restore stable image.</span>
+          </button>
+
+          <button type="button" class="chaos-option-btn" data-action="scale">
+            <span class="chaos-option-cmd">▶ HPA Scale Out: Increase Replicas from 3 to 8</span>
+            <span class="chaos-option-expl">Temporarily spin up additional worker pods to absorb incoming request spikes while pods restart.</span>
+          </button>
+
+          <button type="button" class="chaos-option-btn" data-action="traffic">
+            <span class="chaos-option-cmd">▶ DNS Traffic Shift: Divert Traffic to Secondary AWS EKS Region</span>
+            <span class="chaos-option-expl">Failover external DNS ingress routing to healthy standby cluster in AWS.</span>
+          </button>
+        </div>
+
+        <div id="chaos-feedback" class="chaos-feedback-box" role="status"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resume Quick Previewer Modal -->
+  <div id="resume-modal" class="resume-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+    <div class="resume-modal-box">
+      <div class="resume-modal-header">
+        <div class="resume-modal-title" id="resume-modal-title">
+          <span>📄</span>
+          <span>Shubh_Dixit_SRE_DevOps.pdf (In-Browser Preview)</span>
+        </div>
+        <div class="resume-modal-actions">
+          <a href="Shubh_Dixit_SRE_DevOps.pdf" download class="resume-action-btn">
+            <span>📥</span> Download PDF
+          </a>
+          <button type="button" class="resume-close-btn" aria-label="Close Resume Preview">✕</button>
+        </div>
+      </div>
+      <div class="resume-modal-body">
+        <iframe class="resume-iframe" title="Shubh Dixit Resume Preview"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/audio.js"></script>
+  <script src="assets/js/typing.js"></script>
+  <script src="assets/js/terminal.js"></script>
+  <script src="assets/js/network-bg.js"></script>
+  <script src="assets/js/avatar.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/architecture.js"></script>
+  <script src="assets/js/contact.js"></script>
+  <script src="assets/js/sre-hud.js"></script>
+  <script src="assets/js/chaos-sim.js"></script>
+  <script src="assets/js/palette.js"></script>
+  <script src="assets/js/skills-matrix.js"></script>
+  <script src="assets/js/resume-modal.js"></script>
 
 </body>
 </html>
