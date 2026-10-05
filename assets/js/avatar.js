@@ -49,6 +49,9 @@
     "0 open incidents on production! 🛡️",
     "Terraform apply: Infrastructure ready ✨",
     "99.9% uptime sustained! ⚡",
+    "Pro tip: Press [Ctrl+K] anytime for quick commands! ⌨️",
+    "Try the live SRE Chaos Simulator above! 🚨",
+    "Click 'Preview Resume' for instant in-browser viewing! 📄",
     "Pro tip: Use [←] and [→] arrows to walk me! 🎮"
   ];
   var clickQuoteIndex = 0;

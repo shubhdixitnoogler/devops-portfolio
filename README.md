@@ -26,10 +26,10 @@ The website is built with lightweight technologies to ensure fast loading and ea
 
 ## 🛠️ Tech Stack
 
-- HTML5
-- CSS3
-- JavaScript
-- GitHub Actions (CI)
+- HTML5 & CSS3
+- Modern Vanilla JavaScript (No heavy frameworks)
+- Netlify (Hosting & Global Edge CDN)
+- GitHub Actions (CI Code Quality & Lint Validation)
 - Git & GitHub
 
 ---
@@ -43,9 +43,27 @@ The website is built with lightweight technologies to ensure fast loading and ea
 │       └── ci.yml
 ├── assets/
 │   ├── css/
+│   │   ├── style.css
+│   │   ├── avatar.css
+│   │   ├── cursor.css
+│   │   └── sre-features.css
 │   ├── img/
 │   └── js/
+│       ├── audio.js
+│       ├── avatar.js
+│       ├── architecture.js
+│       ├── chaos-sim.js
+│       ├── contact.js
+│       ├── cursor.js
+│       ├── network-bg.js
+│       ├── palette.js
+│       ├── resume-modal.js
+│       ├── skills-matrix.js
+│       ├── sre-hud.js
+│       ├── terminal.js
+│       └── typing.js
 ├── index.html
+├── netlify.toml
 ├── Shubh_Dixit_SRE_DevOps.pdf
 └── README.md
 ```

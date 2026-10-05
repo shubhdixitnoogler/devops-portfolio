@@ -27,6 +27,10 @@
         '  <span class="term-amber">skills</span>       - Cloud, K8s, IaC, CI/CD, and Observability stack',
         '  <span class="term-amber">experience</span>   - Career history & achievements at HCL Tech',
         '  <span class="term-amber">projects</span>     - Overview of key engineering projects',
+        '  <span class="term-amber">metrics</span>      - Live cluster telemetry & golden signals',
+        '  <span class="term-amber">chaos</span>        - Launch interactive SRE Chaos Simulator (P1 incident)',
+        '  <span class="term-amber">preview</span>      - In-browser resume quick preview modal',
+        '  <span class="term-amber">palette</span>      - Global command palette (Ctrl+K)',
         '  <span class="term-amber">kubectl</span>      - Run K8s commands (<span class="term-dim">kubectl get nodes</span>, <span class="term-dim">kubectl get pods</span>)',
         '  <span class="term-amber">terraform</span>    - Run IaC commands (<span class="term-dim">terraform plan</span>, <span class="term-dim">terraform apply</span>)',
         '  <span class="term-amber">uptime</span>       - Production uptime metrics & incident counter',
@@ -76,6 +80,41 @@
         '3. <span class="term-amber">Zero-Downtime Deployment Strategy</span> - Blue-Green & Canary releases with automated rollback',
         '4. <span class="term-amber">Enterprise Observability Stack</span>     - Custom Grafana dashboards & SLO alert rules'
       ].join("\n");
+    },
+
+    metrics: function () {
+      return [
+        '<span class="term-cyan">● CURRENT K8S TELEMETRY (PromQL Ingestion):</span>',
+        '  Latency (P95):    <span class="term-green">24ms</span> (SLO: &lt;50ms)',
+        '  Traffic (RPS):     <span class="term-amber">1,420 req/s</span> (Ingress NGINX)',
+        '  Error Rate (5xx):  <span class="term-green">0.001%</span> (Nominal)',
+        '  CPU Saturation:    <span class="term-cyan">42%</span> (Cluster 6 Nodes Headroom)',
+        '  Active Pods:       <span class="term-green">14 Healthy, 0 CrashLoopBackOff</span>'
+      ].join("\n");
+    },
+
+    chaos: function () {
+      if (window.openChaosSimulator) {
+        window.openChaosSimulator();
+        return '<span class="term-amber">🚨 Launching SRE Chaos Simulator... Standby for P1 incident triage!</span>';
+      }
+      return '<span class="term-red">Chaos Simulator unavailable.</span>';
+    },
+
+    preview: function () {
+      if (window.openResumeModal) {
+        window.openResumeModal();
+        return '<span class="term-cyan">📄 Opening in-browser resume previewer modal...</span>';
+      }
+      return '<span class="term-red">Resume preview modal unavailable.</span>';
+    },
+
+    palette: function () {
+      if (window.openCommandPalette) {
+        window.openCommandPalette();
+        return '<span class="term-cyan">⌨️ Opening Command Palette (Ctrl+K)...</span>';
+      }
+      return '<span class="term-red">Command Palette unavailable.</span>';
     },
 
     uptime: function () {

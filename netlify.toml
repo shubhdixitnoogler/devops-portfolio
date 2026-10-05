@@ -1,0 +1,49 @@
+# =====================================================
+# Netlify Configuration for Shubh Dixit Portfolio
+# Domain: https://shubhdixit.cloud/
+# =====================================================
+
+[build]
+  publish = "."
+
+# Global Security & Framing Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Allow same-origin iframe embedding for Resume Quick Preview modal
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache static stylesheet assets for high-speed edge delivery
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache static JavaScript assets
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache images & icons
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Resume PDF delivery headers
+[[headers]]
+  for = "/Shubh_Dixit_SRE_DevOps.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+    Content-Disposition = "inline; filename=\"Shubh_Dixit_SRE_DevOps.pdf\""
+
+# Clean routing / 404 fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
