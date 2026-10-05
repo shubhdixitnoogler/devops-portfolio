@@ -286,6 +286,9 @@
   /* ---------- Jump / Wave Trigger ---------- */
   function triggerJump() {
     isJumping = true;
+    if (window.DevOpsAudio) {
+      window.DevOpsAudio.playJump();
+    }
     clearTimeout(jumpTimer);
     jumpTimer = setTimeout(function () {
       isJumping = false;
