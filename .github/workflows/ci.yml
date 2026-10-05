@@ -2,18 +2,14 @@ name: CI/CD - DevOps Portfolio
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
+# Only read access is required because GitHub Actions
+# is performing validation only. Netlify handles deployment.
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   lint-and-validate:
@@ -21,26 +17,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # --------------------------------------------------
+      # 1. Checkout Repository
+      # --------------------------------------------------
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # --------------------------------------------------
+      # 2. Setup Node.js
+      # --------------------------------------------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
+      # --------------------------------------------------
+      # 3. Install Validation Tools
+      # --------------------------------------------------
       - name: Install Validation Tools
         run: |
           npm install --no-save htmlhint stylelint stylelint-config-standard
 
+      # --------------------------------------------------
+      # 4. Validate HTML
+      # --------------------------------------------------
       - name: Validate HTML Syntax & Accessibility
         run: |
-          npx htmlhint "index.html" --rules "tag-pair=true,attr-no-duplication=true,doctype-first=true,spec-char-escape=false"
+          npx htmlhint "index.html" \
+            --rules "tag-pair=true,attr-no-duplication=true,doctype-first=true,spec-char-escape=false"
 
+      # --------------------------------------------------
+      # 5. Validate CSS
+      # --------------------------------------------------
       - name: Validate CSS Syntax
         run: |
-          npx stylelint "assets/css/*.css" --config '{"extends": "stylelint-config-standard", "rules": {"no-descending-specificity": null, "property-no-vendor-prefix": null}}' || true
+          npx stylelint "assets/css/*.css" \
+            --config '{"extends": "stylelint-config-standard", "rules": {"no-descending-specificity": null, "property-no-vendor-prefix": null}}' || true
 
+      # --------------------------------------------------
+      # 6. Validate JavaScript
+      # --------------------------------------------------
       - name: Validate JavaScript Syntax
         run: |
           for file in assets/js/*.js; do
@@ -48,40 +64,61 @@ jobs:
             echo "✅ Syntax valid: $file"
           done
 
+      # --------------------------------------------------
+      # 7. Verify Critical Files & Assets
+      # --------------------------------------------------
       - name: Verify Critical Assets & Links
         run: |
-          echo "Verifying project files and assets..."
-          test -f "index.html" || { echo "❌ Missing index.html"; exit 1; }
-          test -f "Shubh_Dixit_SRE_DevOps.pdf" || { echo "❌ Missing Resume PDF"; exit 1; }
-          test -f "assets/css/style.css" || { echo "❌ Missing style.css"; exit 1; }
-          test -f "assets/css/avatar.css" || { echo "❌ Missing avatar.css"; exit 1; }
-          test -f "assets/css/cursor.css" || { echo "❌ Missing cursor.css"; exit 1; }
-          test -f "assets/js/avatar.js" || { echo "❌ Missing avatar.js"; exit 1; }
-          test -f "assets/js/cursor.js" || { echo "❌ Missing cursor.js"; exit 1; }
-          test -f "assets/js/contact.js" || { echo "❌ Missing contact.js"; exit 1; }
+          echo "🔍 Verifying project files and assets..."
+
+          test -f "index.html" || {
+            echo "❌ Missing index.html"
+            exit 1
+          }
+
+          test -f "Shubh_Dixit_SRE_DevOps.pdf" || {
+            echo "❌ Missing Resume PDF"
+            exit 1
+          }
+
+          test -f "assets/css/style.css" || {
+            echo "❌ Missing style.css"
+            exit 1
+          }
+
+          test -f "assets/css/avatar.css" || {
+            echo "❌ Missing avatar.css"
+            exit 1
+          }
+
+          test -f "assets/css/cursor.css" || {
+            echo "❌ Missing cursor.css"
+            exit 1
+          }
+
+          test -f "assets/js/avatar.js" || {
+            echo "❌ Missing avatar.js"
+            exit 1
+          }
+
+          test -f "assets/js/cursor.js" || {
+            echo "❌ Missing cursor.js"
+            exit 1
+          }
+
+          test -f "assets/js/contact.js" || {
+            echo "❌ Missing contact.js"
+            exit 1
+          }
+
           echo "✅ All critical assets verified successfully."
 
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: lint-and-validate
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # --------------------------------------------------
+      # 8. Final CI Status
+      # --------------------------------------------------
+      - name: CI Validation Complete
+        run: |
+          echo "========================================"
+          echo "✅ CI VALIDATION PASSED"
+          echo "========================================"
+          echo "Netlify will handle the deployment."
