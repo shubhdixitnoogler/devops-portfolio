@@ -42,9 +42,261 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/avatar.css">
+  <link rel="stylesheet" href="assets/css/cursor.css">
 </head>
 
 <body>
+
+  <!-- Walking DevOps Engineer Avatar -->
+  <div id="avatar-wrap" aria-hidden="false">
+    <div id="avatar" role="button" tabindex="0" title="Hi! I'm your DevOps buddy 🚀 Click me or press Space to jump!" aria-label="DevOps Tour Guide Avatar">
+      <div id="avatar-speech" class="avatar-speech" role="status" aria-live="polite">
+        <span class="speech-tag">DEV-BOT</span>
+        <span class="speech-text">Welcome to Shubh's DevOps space! 🚀</span>
+      </div>
+      <span class="avatar-click-hint">[Click / Space]</span>
+      <div class="avatar-body">
+        <svg viewBox="0 0 100 106" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- ===== IDLE FRAME ===== -->
+        <g class="idle-frame character">
+          <!-- Antenna -->
+          <line x1="50" y1="18" x2="50" y2="8" stroke="#7c8794" stroke-width="1.5"/>
+          <circle cx="50" cy="6" r="3" fill="#ffb454">
+            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Helmet -->
+          <circle cx="50" cy="30" r="18" fill="#2a3a4e"/>
+          <circle cx="50" cy="30" r="15" fill="#1a2636"/>
+          <!-- Visor -->
+          <ellipse cx="50" cy="32" rx="12" ry="10" fill="#0e1e2e" opacity="0.9"/>
+          <ellipse cx="46" cy="29" rx="5" ry="3" fill="rgba(255,255,255,0.1)" transform="rotate(-10,46,29)"/>
+          <!-- Eyes -->
+          <g>
+            <ellipse cx="44" cy="31" rx="3" ry="3.2" fill="#cdd6e0"/>
+            <ellipse cx="56" cy="31" rx="3" ry="3.2" fill="#cdd6e0"/>
+            <circle cx="44.5" cy="31" r="1.5" fill="#0a0d12"/>
+            <circle cx="56.5" cy="31" r="1.5" fill="#0a0d12"/>
+            <circle cx="45.5" cy="30" r="0.7" fill="#fff" opacity="0.8"/>
+            <circle cx="57.5" cy="30" r="0.7" fill="#fff" opacity="0.8"/>
+            <animate attributeName="opacity" values="1;1;1;0.1;1;1;1;1;1;0.1;1;1" dur="4s" repeatCount="indefinite"/>
+          </g>
+          <!-- Smile -->
+          <path d="M46 37 Q50 41 54 37" stroke="#5eead4" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.7"/>
+          <!-- Body -->
+          <rect x="36" y="48" width="28" height="34" rx="6" fill="#1e2a3a"/>
+          <rect x="39" y="48" width="22" height="30" rx="4" fill="#253545"/>
+          <line x1="50" y1="50" x2="50" y2="76" stroke="#ffb454" stroke-width="0.8" opacity="0.3"/>
+          <!-- Belt -->
+          <rect x="38" y="68" width="24" height="4" rx="2" fill="#2d3d50"/>
+          <rect x="46" y="67" width="8" height="6" rx="1.5" fill="#ffb454" opacity="0.6"/>
+          <!-- Left arm (idle, down) -->
+          <path d="M36 54 Q28 62 30 74" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <circle cx="30" cy="75" r="4" fill="#1e2a3a"/>
+          <!-- Right arm (idle, down) -->
+          <path d="M64 54 Q72 62 70 74" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <circle cx="70" cy="75" r="4" fill="#1e2a3a"/>
+          <!-- Legs (standing) -->
+          <rect x="40" y="82" width="8" height="18" rx="3" fill="#1e2a3a"/>
+          <rect x="52" y="82" width="8" height="18" rx="3" fill="#1e2a3a"/>
+          <!-- Boots -->
+          <rect x="38" y="97" width="12" height="6" rx="3" fill="#2d3d50"/>
+          <rect x="50" y="97" width="12" height="6" rx="3" fill="#2d3d50"/>
+          <rect x="38" y="97" width="12" height="2.5" rx="1" fill="#ffb454" opacity="0.35"/>
+          <rect x="50" y="97" width="12" height="2.5" rx="1" fill="#ffb454" opacity="0.35"/>
+          <!-- Idle breathing -->
+          <animateTransform attributeName="transform" type="translate"
+            values="0,0; 0,-1; 0,0" dur="2.5s" repeatCount="indefinite"/>
+        </g>
+
+        <!-- ===== WALK FRAME 1 (right leg forward) ===== -->
+        <g class="walk-frame character">
+          <!-- Antenna -->
+          <line x1="50" y1="18" x2="50" y2="8" stroke="#7c8794" stroke-width="1.5"/>
+          <circle cx="50" cy="6" r="3" fill="#ffb454"/>
+          <!-- Helmet -->
+          <circle cx="50" cy="30" r="18" fill="#2a3a4e"/>
+          <circle cx="50" cy="30" r="15" fill="#1a2636"/>
+          <ellipse cx="50" cy="32" rx="12" ry="10" fill="#0e1e2e" opacity="0.9"/>
+          <!-- Eyes -->
+          <ellipse cx="44" cy="31" rx="3" ry="3.2" fill="#cdd6e0"/>
+          <ellipse cx="56" cy="31" rx="3" ry="3.2" fill="#cdd6e0"/>
+          <circle cx="45" cy="31" r="1.5" fill="#0a0d12"/>
+          <circle cx="57" cy="31" r="1.5" fill="#0a0d12"/>
+          <!-- Smile -->
+          <path d="M46 37 Q50 40 54 37" stroke="#5eead4" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <!-- Body -->
+          <rect x="36" y="48" width="28" height="34" rx="6" fill="#1e2a3a"/>
+          <rect x="39" y="48" width="22" height="30" rx="4" fill="#253545"/>
+          <line x1="50" y1="50" x2="50" y2="76" stroke="#ffb454" stroke-width="0.8" opacity="0.3"/>
+          <rect x="38" y="68" width="24" height="4" rx="2" fill="#2d3d50"/>
+          <rect x="46" y="67" width="8" height="6" rx="1.5" fill="#ffb454" opacity="0.6"/>
+          <!-- Left arm (back) -->
+          <path d="M36 54 Q26 58 28 70" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Right arm (forward) -->
+          <path d="M64 54 Q74 58 72 70" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Left leg (back) -->
+          <rect x="40" y="82" width="8" height="18" rx="3" fill="#1e2a3a" transform="rotate(-15,44,82)"/>
+          <rect x="36" y="97" width="12" height="6" rx="3" fill="#2d3d50" transform="rotate(-15,42,97)"/>
+          <!-- Right leg (forward) -->
+          <rect x="52" y="82" width="8" height="18" rx="3" fill="#1e2a3a" transform="rotate(15,56,82)"/>
+          <rect x="52" y="97" width="12" height="6" rx="3" fill="#2d3d50" transform="rotate(15,58,97)"/>
+        </g>
+
+        <!-- ===== WALK FRAME 2 (neutral mid-step) ===== -->
+        <g class="walk-frame character">
+          <line x1="50" y1="17" x2="50" y2="7" stroke="#7c8794" stroke-width="1.5"/>
+          <circle cx="50" cy="5" r="3" fill="#ffb454"/>
+          <circle cx="50" cy="29" r="18" fill="#2a3a4e"/>
+          <circle cx="50" cy="29" r="15" fill="#1a2636"/>
+          <ellipse cx="50" cy="31" rx="12" ry="10" fill="#0e1e2e" opacity="0.9"/>
+          <ellipse cx="44" cy="30" rx="3" ry="3.2" fill="#cdd6e0"/>
+          <ellipse cx="56" cy="30" rx="3" ry="3.2" fill="#cdd6e0"/>
+          <circle cx="45" cy="30" r="1.5" fill="#0a0d12"/>
+          <circle cx="57" cy="30" r="1.5" fill="#0a0d12"/>
+          <path d="M46 36 Q50 39 54 36" stroke="#5eead4" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <rect x="36" y="47" width="28" height="34" rx="6" fill="#1e2a3a"/>
+          <rect x="39" y="47" width="22" height="30" rx="4" fill="#253545"/>
+          <line x1="50" y1="49" x2="50" y2="75" stroke="#ffb454" stroke-width="0.8" opacity="0.3"/>
+          <rect x="38" y="67" width="24" height="4" rx="2" fill="#2d3d50"/>
+          <rect x="46" y="66" width="8" height="6" rx="1.5" fill="#ffb454" opacity="0.6"/>
+          <path d="M36 53 Q30 62 32 72" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M64 53 Q70 62 68 72" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <rect x="41" y="81" width="8" height="18" rx="3" fill="#1e2a3a"/>
+          <rect x="51" y="81" width="8" height="18" rx="3" fill="#1e2a3a"/>
+          <rect x="39" y="96" width="12" height="6" rx="3" fill="#2d3d50"/>
+          <rect x="49" y="96" width="12" height="6" rx="3" fill="#2d3d50"/>
+        </g>
+
+        <!-- ===== WALK FRAME 3 (left leg forward) ===== -->
+        <g class="walk-frame character">
+          <line x1="50" y1="18" x2="50" y2="8" stroke="#7c8794" stroke-width="1.5"/>
+          <circle cx="50" cy="6" r="3" fill="#ffb454"/>
+          <circle cx="50" cy="30" r="18" fill="#2a3a4e"/>
+          <circle cx="50" cy="30" r="15" fill="#1a2636"/>
+          <ellipse cx="50" cy="32" rx="12" ry="10" fill="#0e1e2e" opacity="0.9"/>
+          <ellipse cx="44" cy="31" rx="3" ry="3.2" fill="#cdd6e0"/>
+          <ellipse cx="56" cy="31" rx="3" ry="3.2" fill="#cdd6e0"/>
+          <circle cx="45" cy="31" r="1.5" fill="#0a0d12"/>
+          <circle cx="57" cy="31" r="1.5" fill="#0a0d12"/>
+          <path d="M46 37 Q50 40 54 37" stroke="#5eead4" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <rect x="36" y="48" width="28" height="34" rx="6" fill="#1e2a3a"/>
+          <rect x="39" y="48" width="22" height="30" rx="4" fill="#253545"/>
+          <line x1="50" y1="50" x2="50" y2="76" stroke="#ffb454" stroke-width="0.8" opacity="0.3"/>
+          <rect x="38" y="68" width="24" height="4" rx="2" fill="#2d3d50"/>
+          <rect x="46" y="67" width="8" height="6" rx="1.5" fill="#ffb454" opacity="0.6"/>
+          <!-- Right arm (back) -->
+          <path d="M64 54 Q74 58 72 70" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Left arm (forward) -->
+          <path d="M36 54 Q26 58 28 70" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Left leg (forward) -->
+          <rect x="40" y="82" width="8" height="18" rx="3" fill="#1e2a3a" transform="rotate(15,44,82)"/>
+          <rect x="40" y="97" width="12" height="6" rx="3" fill="#2d3d50" transform="rotate(15,46,97)"/>
+          <!-- Right leg (back) -->
+          <rect x="52" y="82" width="8" height="18" rx="3" fill="#1e2a3a" transform="rotate(-15,56,82)"/>
+          <rect x="54" y="97" width="12" height="6" rx="3" fill="#2d3d50" transform="rotate(-15,60,97)"/>
+        </g>
+
+        <!-- ===== WALK FRAME 4 (neutral mid-step other side) ===== -->
+        <g class="walk-frame character">
+          <line x1="50" y1="19" x2="50" y2="9" stroke="#7c8794" stroke-width="1.5"/>
+          <circle cx="50" cy="7" r="3" fill="#ffb454"/>
+          <circle cx="50" cy="31" r="18" fill="#2a3a4e"/>
+          <circle cx="50" cy="31" r="15" fill="#1a2636"/>
+          <ellipse cx="50" cy="33" rx="12" ry="10" fill="#0e1e2e" opacity="0.9"/>
+          <ellipse cx="44" cy="32" rx="3" ry="3.2" fill="#cdd6e0"/>
+          <ellipse cx="56" cy="32" rx="3" ry="3.2" fill="#cdd6e0"/>
+          <circle cx="45" cy="32" r="1.5" fill="#0a0d12"/>
+          <circle cx="57" cy="32" r="1.5" fill="#0a0d12"/>
+          <path d="M46 38 Q50 41 54 38" stroke="#5eead4" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <rect x="36" y="49" width="28" height="34" rx="6" fill="#1e2a3a"/>
+          <rect x="39" y="49" width="22" height="30" rx="4" fill="#253545"/>
+          <line x1="50" y1="51" x2="50" y2="77" stroke="#ffb454" stroke-width="0.8" opacity="0.3"/>
+          <rect x="38" y="69" width="24" height="4" rx="2" fill="#2d3d50"/>
+          <rect x="46" y="68" width="8" height="6" rx="1.5" fill="#ffb454" opacity="0.6"/>
+          <path d="M36 55 Q30 63 32 73" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M64 55 Q70 63 68 73" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <rect x="42" y="83" width="8" height="18" rx="3" fill="#1e2a3a"/>
+          <rect x="50" y="83" width="8" height="18" rx="3" fill="#1e2a3a"/>
+          <rect x="40" y="98" width="12" height="6" rx="3" fill="#2d3d50"/>
+          <rect x="48" y="98" width="12" height="6" rx="3" fill="#2d3d50"/>
+        </g>
+
+        <!-- ===== JUMP FRAME ===== -->
+        <g class="jump-frame character">
+          <line x1="50" y1="12" x2="50" y2="2" stroke="#7c8794" stroke-width="1.5"/>
+          <circle cx="50" cy="0" r="3" fill="#ffb454"/>
+          <circle cx="50" cy="24" r="18" fill="#2a3a4e"/>
+          <circle cx="50" cy="24" r="15" fill="#1a2636"/>
+          <ellipse cx="50" cy="26" rx="12" ry="10" fill="#0e1e2e" opacity="0.9"/>
+          <!-- Excited eyes (bigger) -->
+          <ellipse cx="44" cy="25" rx="3.5" ry="3.8" fill="#cdd6e0"/>
+          <ellipse cx="56" cy="25" rx="3.5" ry="3.8" fill="#cdd6e0"/>
+          <circle cx="44.5" cy="25" r="2" fill="#0a0d12"/>
+          <circle cx="56.5" cy="25" r="2" fill="#0a0d12"/>
+          <circle cx="45.5" cy="24" r="0.8" fill="#fff"/>
+          <circle cx="57.5" cy="24" r="0.8" fill="#fff"/>
+          <!-- Open mouth (excited) -->
+          <ellipse cx="50" cy="33" rx="4" ry="3" fill="#0a1520" opacity="0.6"/>
+          <!-- Body (tucked up) -->
+          <rect x="36" y="42" width="28" height="30" rx="6" fill="#1e2a3a"/>
+          <rect x="39" y="42" width="22" height="26" rx="4" fill="#253545"/>
+          <line x1="50" y1="44" x2="50" y2="66" stroke="#ffb454" stroke-width="0.8" opacity="0.3"/>
+          <rect x="38" y="60" width="24" height="4" rx="2" fill="#2d3d50"/>
+          <rect x="46" y="59" width="8" height="6" rx="1.5" fill="#ffb454" opacity="0.6"/>
+          <!-- Arms raised -->
+          <path d="M36 48 Q24 40 22 50" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <circle cx="22" cy="51" r="4" fill="#1e2a3a"/>
+          <path d="M64 48 Q76 40 78 50" stroke="#253545" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <circle cx="78" cy="51" r="4" fill="#1e2a3a"/>
+          <!-- Legs tucked -->
+          <rect x="40" y="72" width="8" height="14" rx="3" fill="#1e2a3a" transform="rotate(20,44,72)"/>
+          <rect x="52" y="72" width="8" height="14" rx="3" fill="#1e2a3a" transform="rotate(-20,56,72)"/>
+          <rect x="38" y="83" width="12" height="6" rx="3" fill="#2d3d50" transform="rotate(20,44,83)"/>
+          <rect x="52" y="83" width="12" height="6" rx="3" fill="#2d3d50" transform="rotate(-20,58,83)"/>
+        </g>
+
+        </svg>
+      </div>
+      <div class="avatar-shadow"></div>
+    </div>
+  </div>
+  <div id="avatar-particles" aria-hidden="true"></div>
+
+  <!-- Interactive Ground Navigation Rail -->
+  <nav id="avatar-ground" aria-label="Portfolio Section Navigation">
+    <div class="ground-rail-track">
+      <div class="ground-rail-line" aria-hidden="true"></div>
+      <div class="ground-rail-progress" aria-hidden="true"></div>
+      <div class="ground-milestones">
+        <button type="button" class="milestone-btn active" data-section="hero" title="Go to Hero section">
+          <span class="m-dot"></span>
+          <span class="m-label">Hero</span>
+        </button>
+        <button type="button" class="milestone-btn" data-section="about" title="Go to About section">
+          <span class="m-dot"></span>
+          <span class="m-label">About</span>
+        </button>
+        <button type="button" class="milestone-btn" data-section="skills" title="Go to Skills section">
+          <span class="m-dot"></span>
+          <span class="m-label">Skills</span>
+        </button>
+        <button type="button" class="milestone-btn" data-section="experience" title="Go to Experience section">
+          <span class="m-dot"></span>
+          <span class="m-label">Exp</span>
+        </button>
+        <button type="button" class="milestone-btn" data-section="projects" title="Go to Projects section">
+          <span class="m-dot"></span>
+          <span class="m-label">Projects</span>
+        </button>
+        <button type="button" class="milestone-btn" data-section="contact" title="Go to Contact section">
+          <span class="m-dot"></span>
+          <span class="m-label">Contact</span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
   <div class="ambient-glow ambient-glow-a" aria-hidden="true"></div>
@@ -454,6 +706,8 @@
   </footer>
 <script src="assets/js/typing.js"></script>
 <script src="assets/js/network-bg.js"></script>
+<script src="assets/js/avatar.js"></script>
+<script src="assets/js/cursor.js"></script>
 
 </body>
 </html>

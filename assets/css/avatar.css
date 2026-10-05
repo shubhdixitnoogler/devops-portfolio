@@ -1,0 +1,381 @@
+/* =====================================================
+   Walking DevOps Avatar Styles
+   Pixel-perfect alignment with bottom navigation rail,
+   section milestone checkpoints, and character physics.
+===================================================== */
+
+body {
+  padding-bottom: 64px;
+}
+
+/* Ground navigation rail fixed to bottom of screen */
+#avatar-ground {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  z-index: 45;
+  background: linear-gradient(180deg, rgba(10, 13, 18, 0.4) 0%, rgba(10, 13, 18, 0.94) 35%, rgba(5, 7, 10, 0.98) 100%);
+  border-top: 1px solid rgba(33, 42, 52, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.ground-rail-track {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* Rail line passing directly through the center of every milestone dot */
+.ground-rail-line {
+  position: absolute;
+  top: 16px;
+  left: 36px;
+  right: 36px;
+  height: 2px;
+  background: rgba(33, 42, 52, 0.9);
+  box-shadow: 0 0 6px rgba(94, 234, 212, 0.15);
+  border-radius: 1px;
+}
+
+/* Glowing progress line running along the rail line */
+.ground-rail-progress {
+  position: absolute;
+  top: 16px;
+  left: 36px;
+  height: 2px;
+  width: 0px;
+  max-width: calc(100% - 72px);
+  background: linear-gradient(90deg, var(--amber, #ffb454), var(--cyan, #5eead4));
+  box-shadow: 0 0 10px var(--cyan, #5eead4), 0 0 4px var(--amber, #ffb454);
+  border-radius: 1px;
+  transition: width 0.08s linear;
+}
+
+/* Milestone buttons along the track */
+.ground-milestones {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 24px 0 24px;
+  z-index: 2;
+}
+
+.milestone-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-dim, #7c8794);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
+  transition: color 0.25s ease, transform 0.2s ease;
+  position: relative;
+  min-width: 48px;
+}
+
+/* Milestone dot: exactly on the 16px rail line (center at 17px) */
+.milestone-btn .m-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #141b24;
+  border: 2px solid var(--text-faint, #4d5865);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.milestone-btn:hover .m-dot {
+  border-color: var(--cyan, #5eead4);
+  background: rgba(94, 234, 212, 0.3);
+  transform: scale(1.2);
+}
+
+.milestone-btn.active .m-dot {
+  background: var(--cyan, #5eead4);
+  border-color: #ffffff;
+  box-shadow: 0 0 12px var(--cyan, #5eead4), 0 0 4px #ffffff;
+  transform: scale(1.35);
+}
+
+.milestone-btn .m-label {
+  transition: color 0.25s ease, transform 0.2s ease;
+}
+
+.milestone-btn:hover .m-label {
+  color: var(--cyan, #5eead4);
+}
+
+.milestone-btn.active .m-label {
+  color: var(--amber, #ffb454);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 180, 84, 0.4);
+}
+
+/* Avatar container wrap — anchored at rail baseline (bottom: 36px) */
+#avatar-wrap {
+  position: fixed;
+  bottom: 36px;
+  left: 0;
+  right: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 50;
+  overflow: visible;
+}
+
+/* Avatar unit */
+#avatar {
+  position: absolute;
+  bottom: -3px; /* boots sit directly on top of the 2px rail line! */
+  left: 0;
+  width: 72px;
+  height: 92px;
+  margin-left: -36px;
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.5s ease;
+}
+
+/* Character body containing the SVG */
+.avatar-body {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transform-origin: 50% 90%;
+  filter: drop-shadow(0 0 10px rgba(255, 180, 84, 0.35));
+  transition: filter 0.2s ease;
+}
+
+#avatar:hover .avatar-body {
+  filter: drop-shadow(0 0 18px rgba(255, 180, 84, 0.65)) drop-shadow(0 0 30px rgba(94, 234, 212, 0.3));
+}
+
+.avatar-body svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Walk / Idle / Jump frames */
+.walk-frame { display: none; }
+.idle-frame { display: block; }
+.jump-frame { display: none; }
+
+/* Contact shadow on the rail line directly under boots */
+.avatar-shadow {
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  width: 38px;
+  height: 6px;
+  margin-left: -19px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+/* Celebration jump animation on click */
+@keyframes avatarCelebration {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); }
+  25%  { transform: translateY(-24px) rotate(-10deg) scale(1.12); }
+  50%  { transform: translateY(-16px) rotate(10deg) scale(1.08); }
+  75%  { transform: translateY(-6px) rotate(-4deg) scale(1.04); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
+.avatar-body.avatar-celebrate {
+  animation: avatarCelebration 0.75s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/* Speech bubble floating above avatar helmet */
+#avatar-speech {
+  position: absolute;
+  bottom: 96px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  z-index: 55;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: #eef2f6;
+  background: rgba(16, 21, 28, 0.96);
+  border: 1px solid rgba(94, 234, 212, 0.45);
+  border-radius: 8px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(94, 234, 212, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+#avatar-speech::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: rgba(16, 21, 28, 0.96) transparent transparent transparent;
+}
+
+#avatar-speech.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.speech-tag {
+  color: var(--amber, #ffb454);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
+  border-right: 1px solid rgba(255, 180, 84, 0.3);
+  padding-right: 6px;
+}
+
+.speech-text {
+  color: #cdd6e0;
+}
+
+/* Dust particles container — anchored at rail baseline */
+#avatar-particles {
+  position: fixed;
+  bottom: 36px;
+  left: 0;
+  right: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 46;
+  overflow: visible;
+}
+
+.walk-dust {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 180, 84, 0.9) 0%, rgba(94, 234, 212, 0.5) 70%, transparent 100%);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Click hint */
+.avatar-click-hint {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.58rem;
+  color: var(--text-dim, #7c8794);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+#avatar:hover .avatar-click-hint {
+  opacity: 0.85;
+}
+
+/* =====================================================
+   Reduced Motion
+===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  #avatar {
+    opacity: 1 !important;
+    transform: none !important;
+    position: static !important;
+    margin: 20px auto !important;
+    display: block;
+    filter: none;
+  }
+  #avatar-wrap {
+    position: relative;
+    text-align: center;
+    bottom: 0;
+    height: auto;
+  }
+  .avatar-body {
+    transform: none !important;
+    filter: none;
+  }
+  #avatar-particles,
+  #avatar-speech,
+  .avatar-shadow {
+    display: none !important;
+  }
+  #avatar-ground {
+    position: static;
+    margin-top: 20px;
+  }
+}
+
+/* =====================================================
+   Responsive Mobile
+===================================================== */
+@media (max-width: 768px) {
+  #avatar {
+    width: 60px;
+    height: 76px;
+    margin-left: -30px;
+    bottom: -2px;
+  }
+  #avatar-ground {
+    height: 48px;
+  }
+  .ground-rail-line,
+  .ground-rail-progress {
+    top: 14px;
+    left: 18px;
+    right: 18px;
+  }
+  .ground-milestones {
+    padding: 10px 14px 0 14px;
+  }
+  .milestone-btn {
+    min-width: 36px;
+    font-size: 0.6rem;
+  }
+  .milestone-btn .m-dot {
+    width: 8px;
+    height: 8px;
+  }
+  #avatar-wrap,
+  #avatar-particles {
+    bottom: 34px;
+  }
+  #avatar-speech {
+    font-size: 0.65rem;
+    padding: 5px 9px;
+    bottom: 80px;
+    max-width: 240px;
+    white-space: normal;
+  }
+}
