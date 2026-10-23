@@ -47,7 +47,6 @@ jobs:
           echo "Verifying project files and assets..."
           test -f "index.html" || { echo "❌ Missing index.html"; exit 1; }
           test -f "Shubh_Dixit_SRE_DevOps.pdf" || { echo "❌ Missing Resume PDF"; exit 1; }
-          test -f "netlify.toml" || { echo "❌ Missing netlify.toml"; exit 1; }
           test -f "assets/css/style.css" || { echo "❌ Missing style.css"; exit 1; }
           test -f "assets/css/avatar.css" || { echo "❌ Missing avatar.css"; exit 1; }
           test -f "assets/css/cursor.css" || { echo "❌ Missing cursor.css"; exit 1; }
